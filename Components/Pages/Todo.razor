@@ -6,6 +6,22 @@
 
 <h3>Todo</h3>
 
-@code {
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>@todo.Title</li>
+    }
+</ul>
 
+<input placeholder="GETTTER DUNN" @bind="newTodo"/>
+<button @onclick="AddTodo">Add</button>
+
+@code {
+    private string? newTodo;
+    private List<TodoItem> todos = new();
+    
+    private void AddTodo()
+    {
+        todos.Add(new TodoItem { Title = "New Todo" });
+    }
 }
